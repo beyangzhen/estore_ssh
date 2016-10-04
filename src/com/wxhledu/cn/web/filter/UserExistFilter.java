@@ -48,6 +48,9 @@ public class UserExistFilter implements Filter {
 			log.error("请您，先登录！！！");
 			
 			String xRequest = request.getHeader("x-requested-with");
+			System.out.println("**********************" + request.getRequestURI());
+			System.out.println("**********************" + request.getQueryString());
+			System.out.println("**********************" + request.getParameterNames());
 			// 请求是异步请求（请求头为 x-requested-with:XMLHttpRequest）
 			if(StringUtils.isNotBlank(xRequest)){
 				response.getWriter().write("Asyn");

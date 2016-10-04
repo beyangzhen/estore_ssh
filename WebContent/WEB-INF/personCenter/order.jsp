@@ -112,7 +112,7 @@
 	                  <div class="panel-body">
 	                              <div class="order number1">
 	                                    <div class="col-md-1">
-	                                        <img src="image/santi.jpg" alt="" style="width: 64px;"/>
+	                                        <img src="${pageContext.request.contextPath }/resources/image/santi.jpg" alt="" style="width: 64px;"/>
 	                                    </div>
 	
 	                                    <div class="col-md-3">
@@ -153,7 +153,7 @@
 	                  <div class="panel-body">
 	                              <div class="order number1">
 	                                    <div class="col-md-1">
-	                                        <img src="image/dssd.jpg" alt="" style="width: 64px;"/>
+	                                        <img src="${pageContext.request.contextPath }/resources/image/dssd.jpg" alt="" style="width: 64px;"/>
 	                                    </div>
 	
 	                                    <div class="col-md-3">
@@ -193,7 +193,7 @@
 	                  </div>
 	                  <div class="panel-body">
 	                                <div class="col-md-1">
-	                                      <img src="image/gmmt.jpg" alt="" style="width: 64px;"/>
+	                                      <img src="${pageContext.request.contextPath }/resources/image/gmmt.jpg" alt="" style="width: 64px;"/>
 	                                  </div>
 	
 	                                  <div class="col-md-3">
@@ -225,7 +225,7 @@
 	                          <ul class="list-group" style="height: 200px;">
 	                         <li class="list-group-item">
 	                                    <div class="col-md-1">
-	                                          <img src="image/menu5.jpg" alt="" style="width: 64px;"/>
+	                                          <img src="${pageContext.request.contextPath }/resources/image/menu5.jpg" alt="" style="width: 64px;"/>
 	                                      </div>
 	
 	                                      <div class="col-md-3">
