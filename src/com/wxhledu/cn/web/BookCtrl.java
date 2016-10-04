@@ -1,6 +1,7 @@
 package com.wxhledu.cn.web;
 
 import java.sql.SQLException;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +30,22 @@ public class BookCtrl {
 	 * @return
 	 */
 	public String list(HttpServletRequest request, HttpServletResponse response) {
+		
+		// 保存当前页面的url信息（方便用户登录后可以回到此页面）
+		String goUrl = request.getRequestURI();
+		Enumeration<String> params = request.getParameterNames();
+		if(null != params) {
+			goUrl = goUrl.concat("?");
+			while(params.hasMoreElements()) {
+				String param = params.nextElement();
+				String urlParam = param + "=" + request.getParameter(param) + "&";
+				goUrl = goUrl.concat(urlParam);
+			}
+			goUrl = goUrl.substring(request.getContextPath().length(), goUrl.length() - 1);
+		}
+		// 保存(第一次访问) 或  更新(再次访问) session中goUrl的当前页面信息
+		request.getSession().setAttribute("goUrl", goUrl);
+		
 		
 		String parentCategoryId = request.getParameter("parentid"); // 获取父目录的编号，string类型
 		String categoryId = request.getParameter("id"); // 子目录编号（查询子目录时，传的参数）

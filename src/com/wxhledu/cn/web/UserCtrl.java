@@ -96,18 +96,27 @@ public class UserCtrl {
 				if(null != u){ //数据库里存在此用户
 					// 如果找到则用户信息保存到session里，并且返回到首页
 					session.setAttribute(SESSION_LOGIN_USER_KEY, u);
-					return HOME_PAGE_URL;
+					
+					// 判断session中上一个url是否为空
+					String goUrl = (String)session.getAttribute("goUrl");
+					if(null != goUrl) {
+						// 登录后回到之前的页面
+						return "r:" + goUrl;
+					} else {
+						// 用户直接访问登录页面时，转到首页
+						return HOME_PAGE_URL;
+					}
 				} else {
 					// 如果用户不存在,则用户要重新登录
 					return "r:/user/login.jsp";
 				}
 			} catch (SQLException e) {
-				//e.printStackTrace();
+				// e.printStackTrace();
 				log.error("查询用户异常：{}", e.getMessage());
 			}
 		}
 
-		return null;// 成功 f:首页 失败:r:登录
+		return null; // 成功 f:首页 失败:r:登录
 	}
 
 	/**
