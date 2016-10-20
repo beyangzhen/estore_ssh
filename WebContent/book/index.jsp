@@ -144,7 +144,7 @@
 									<c:choose>
 										<c:when test="${param.id eq cat.id}">
 											<div class="wrap checked">
-												<a href="${pageContext.request.contextPath }/BookCtrl?method=list&parentid=${param.parentid }&id=${cat.id}">
+												<a href="${pageContext.request.contextPath }/book/list.action?parentid=${param.parentid }&id=${cat.id}">
 													<span><c:out value="${cat.name }"></c:out></span>
 													<em class="num"></em>
 												</a>
@@ -152,7 +152,7 @@
 										</c:when>
 										<c:otherwise>
 											<div class="wrap">
-												<a href="${pageContext.request.contextPath }/BookCtrl?method=list&parentid=${param.parentid }&id=${cat.id}">
+												<a href="${pageContext.request.contextPath }/book/list.action?parentid=${param.parentid }&id=${cat.id}">
 													<span><c:out value="${cat.name }"></c:out></span>
 													<em class="num"></em>
 												</a>
@@ -223,7 +223,7 @@
 						</c:if>
 						
 						<!-- 统一设置域对象的url属性，供page.jsp中使用el获取 -->
-						<c:set var="url" value="${pageContext.request.contextPath }/BookCtrl?method=list&parentid=${param.parentid }&id=${param.id}"></c:set>
+						<c:set var="url" value="${pageContext.request.contextPath }/book/list.action?parentid=${param.parentid }&id=${param.id}"></c:set>
 						<%-- 提取公共部分出来 用静态引用方式找它加载进来 --%>
 						<%@ include file="/WEB-INF/commons/page.jsp" %>		
 					</c:if>
@@ -238,9 +238,9 @@
 		$(function() { 
 			// 加入购物车
 			$('.icn-cart').on('click', function() {
-				$.post('${pageContext.request.contextPath}/CartCtrl', 
+				$.post('${pageContext.request.contextPath}/cart/add.action', 
 					// 请求的方法和url参数
-					{method:'add', bookid:$(this).attr('data-bookid')}, function(res) { // 回调函数（服务后台响应回来的数据）
+					{bookid:$(this).attr('data-bookid')}, function(res) { // 回调函数（服务后台响应回来的数据）
 						// 未登录用户（异步）访问购物车，转到登录页面
 					    if(res == "Asyn") {
 							location.href = '${pageContext.request.contextPath}/user/login.jsp';

@@ -36,7 +36,7 @@
 		<ul id="bookpage-a">
 			<%-- 如果分页参数p为1或者不存在则为第一页，第一页不显示上一页 --%>
 			<c:if test="${param.p !=1 && param.p != null }">
-				<a href="${url}&p=${pb.currentPage-1}" class="pre " hidefocus="hidefocus">上一页</a>
+				<a href="${url}?p=${pb.currentPage-1}" class="pre " hidefocus="hidefocus">上一页</a>
 			</c:if>
 
 			<%-- 计算begin和end --%>
@@ -66,10 +66,10 @@
 			</c:choose>
 			<%-- 显示点点点 --%>
 			<c:if test="${begin == 2}">
-				<li><a href="${url}&p=1">1</a></li>
+				<li><a href="${url}?p=1">1</a></li>
 			</c:if>
 			<c:if test="${begin > 2}">
-				<li><a href="${url}&p=1">1</a></li>
+				<li><a href="${url}?p=1">1</a></li>
 				<li>...</li>
 			</c:if>
 			<%-- 显示分布 1,2,3 --%>
@@ -77,10 +77,10 @@
 				<%-- 相等时加入激活样式 --%>
 				<c:choose>
 					<c:when test="${pb.currentPage eq i }">
-						<li class="crt"><a href="${url}&p=${i}">${i}</a></li>
+						<li class="crt"><a href="${url}?p=${i}">${i}</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="${url}&p=${i}">${i}</a></li>
+						<li><a href="${url}?p=${i}">${i}</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -88,12 +88,12 @@
 			<%-- 显示点点点 --%>
 			<c:if test="${end < pb.totalPage }">
 				<li>...</li>
-				<li><a href="${url}&p=${pb.totalPage}">${pb.totalPage}</a></li>
+				<li><a href="${url}?p=${pb.totalPage}">${pb.totalPage}</a></li>
 			</c:if>
 		</ul>
 		<%-- 如果当前页为最后一页则不显示下一页 --%>
 		<c:if test="${pb.currentPage != pb.totalPage }">
-			<a href="${url}&p=${pb.currentPage+1}" class="next " hidefocus="hidefocus">下一页</a>
+			<a href="${url}?p=${pb.currentPage+1}" class="next " hidefocus="hidefocus">下一页</a>
 		</c:if>
 	</div>
 </div>

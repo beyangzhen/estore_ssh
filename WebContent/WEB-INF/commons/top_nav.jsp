@@ -27,7 +27,7 @@
 				<li class="rt-li">
 				<c:choose>
 					<c:when test="${login_user != null }">
-						欢迎你，<font color="red">${login_user.username }</font> /<a href="${pageContext.request.contextPath }/UserCtrl?method=logout">注销</a>
+						欢迎你，<font color="red">${login_user.username }</font> /<a href="${pageContext.request.contextPath }/user/logout.action">注销</a>
 					</c:when>
 					<c:otherwise>
 						<a href="${pageContext.request.contextPath }/user/login.jsp">登录</a>/<a href="dklogin.html">注册</a>
@@ -35,9 +35,9 @@
 				</c:choose>
 				</li>
 				<li class="part">|</li>
-				<li class="rt-li shop"><a href="${pageContext.request.contextPath }/CartCtrl?method=list">购物车</a></li>
+				<li class="rt-li shop"><a href="${pageContext.request.contextPath }/cart/list.action">购物车</a></li>
 				<li class="part">|</li>
-				<li class="rt-li myPerson"><a href="${pageContext.request.contextPath }/OrderCtrl?method=personCenter">个人中心</a></li>
+				<li class="rt-li myPerson"><a href="${pageContext.request.contextPath }/order/personCenter.action">个人中心</a></li>
 			</ul>
 		</div>
 	</div>

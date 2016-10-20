@@ -1,1 +1,6 @@
+/applicationContext.xml
 /com/
+/hibernate.cfg.xml
+/jdbc.properties
+/logback.xml
+/struts.xml

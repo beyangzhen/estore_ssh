@@ -83,9 +83,9 @@
 	     <div class="person-left">
 	       <ul class="nav nav-pills nav-stacked">
 	        <li><h3>个人中心</h3></li>
-	        <li value="1"><a href="${pageContext.request.contextPath }/OrderCtrl?method=personCenter">帐号设置</a></li>
+	        <li value="1"><a href="${pageContext.request.contextPath }/order/personCenter.action">帐号设置</a></li>
 	        <li class="act" value="2"><a href="#">订单</a></li>
-	        <li value="3"><a href="${pageContext.request.contextPath }/OrderCtrl?method=amount">我的余额</a></li>
+	        <li value="3"><a href="${pageContext.request.contextPath }/order/amount.action">我的余额</a></li>
 	       </ul>
 	     </div>
 	

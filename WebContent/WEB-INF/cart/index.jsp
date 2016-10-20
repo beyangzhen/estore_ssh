@@ -108,15 +108,14 @@
 							</c:forEach>
 						</div>
 					</div>
-					<form id="delFrm" action="${pageContext.request.contextPath }/CartCtrl" method="get">
-						<input type="hidden" name="method" value="delete">
+					<form id="delFrm" action="${pageContext.request.contextPath }/cart/delete.action" method="get">
 						<input type="hidden" name="p" value="1">
 						<input type="hidden" name="id">
 					</form>
 				</c:if>
 	
 				<%-- 统一设置域对象的url属性，供page.jsp中使用el获取 --%>
-				<c:set var="url" value="${pageContext.request.contextPath }/CartCtrl?method=list"></c:set>
+				<c:set var="url" value="${pageContext.request.contextPath }/cart/list.action"></c:set>
 				<%-- 把分页页面以静态引用的方式引用过来 --%>
 				<%@ include file="/WEB-INF/commons/page.jsp" %>
 			</c:if>
@@ -136,9 +135,9 @@
 				var total = order.find('input');
 				var amount = order.find('.total-amount');
 				var action = $(this).hasClass('btnAdd') ? '+' : '-';
-				$.post('${pageContext.request.contextPath }/CartCtrl',
+				$.post('${pageContext.request.contextPath }/cart/modifyQuantity.action',
 						// 请求的方法和url参数（传递商品id 和 加或减的动作）
-						{ method:'modifyQuantity', action: action, id: $(this).attr('data-itemid') }, function (res){
+						{ action: action, id: $(this).attr('data-itemid') }, function (res){
 							// 服务器端设置了响应头 Context-Type:application/json, jquery会自动将返回的json字符串变成json对象（即：特殊js对象）
 							if (!$.isEmptyObject(res)) {
 								total.val(res.total); // 改变input标签中的文本值
@@ -181,7 +180,7 @@
 					return $(v).val();
 				}).join(','); // 将返回的数组拼接成字符串，并且以,分隔开
 				// 发起异常请求
-				$.post('${pageContext.request.contextPath }/OrderCtrl', {method:'create', ids:ids}, function(res){ 
+				$.post('${pageContext.request.contextPath }/order/create.action', {ids:ids}, function(res){ 
 					if(res != '-1') {
 						location.reload();
 					}

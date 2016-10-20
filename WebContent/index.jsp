@@ -49,7 +49,7 @@
 											<li class="itm">
 											</c:otherwise>
 										</c:choose>
-										<a href="${pageContext.request.contextPath }/BookCtrl?method=list&parentid=${cat.id}&id=${cat.children[0].id}&p=1" hidefocus="hidefocus">
+										<a href="${pageContext.request.contextPath }/book/list.action?parentid=${cat.id}&id=${cat.children[0].id}&p=1" hidefocus="hidefocus">
 											<span class="label">${cat.name}</span>
 										</a>
 									</li>

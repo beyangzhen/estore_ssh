@@ -1,50 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>estore</display-name>
+  <display-name>estore_ssh</display-name>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   
-  <servlet>
-    <description>总的路径分发器</description>
-    <display-name>DispatcherServlet</display-name>
-    <servlet-name>DispatcherServlet</servlet-name>
-    <servlet-class>com.wxhledu.cn.web.DispatcherServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DispatcherServlet</servlet-name>
-    <url-pattern>/UserCtrl</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>DispatcherServlet</servlet-name>
-    <url-pattern>/BookCtrl</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>DispatcherServlet</servlet-name>
-    <url-pattern>/CartCtrl</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>DispatcherServlet</servlet-name>
-    <url-pattern>/OrderCtrl</url-pattern>
-  </servlet-mapping>
-  
-  <listener>
-    <listener-class>com.wxhledu.cn.web.listener.CategoryLoaderListener</listener-class>
-  </listener>
-  
   <filter>
     <display-name>UserExistFilter</display-name>
     <filter-name>UserExistFilter</filter-name>
-    <filter-class>com.wxhledu.cn.web.filter.UserExistFilter</filter-class>
+    <filter-class>com.beyang.cn.web.action.filter.UserExistFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>UserExistFilter</filter-name>
-    <url-pattern>/CartCtrl</url-pattern>
+    <url-pattern>/cart/list.action</url-pattern>
   </filter-mapping>
   <filter-mapping>
     <filter-name>UserExistFilter</filter-name>
-    <url-pattern>/OrderCtrl</url-pattern>
+    <url-pattern>/cart/add.action</url-pattern>
   </filter-mapping>
+  <filter-mapping>
+    <filter-name>UserExistFilter</filter-name>
+    <url-pattern>/order/personCenter.action</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>struts2</filter-name>
+  	<filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>struts2</filter-name>
+  	<url-pattern>*.action</url-pattern>
+  </filter-mapping>
+  
+  <context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  <listener>
+	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <listener>
+    <listener-class>com.beyang.cn.web.action.listener.CategoryLoaderListener</listener-class>
+  </listener>
   
 </web-app>

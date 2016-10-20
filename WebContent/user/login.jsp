@@ -151,8 +151,7 @@
                	</h3> 
 			</div> 
             <div style="background-color:#ffffff;margin:10px;" class="panel-body">
-                <form action="${pageContext.request.contextPath }/UserCtrl" method="post"> <!-- ?method=login --><!-- onsubmit="return false;" 一般不把js混在页面上 -->
-					<input type="hidden" name="method" value="login">               
+                <form action="${pageContext.request.contextPath }/user/login.action" method="post"> <!-- ?method=login --><!-- onsubmit="return false;" 一般不把js混在页面上 -->
                     <ul class="reg-box">                 
                         <li>
                             <label for="">账    号</label><input name="username" type="text" placeholder="请输入您的账号" class="input account" maxlength="11" style="color:#999;"/><span class="error error5"></span>
@@ -182,10 +181,10 @@
 			var rootPath = '${pageContext.request.contextPath }';
 		
 			// 设置验证码
-			$('.phoKey').css('background', 'url('+rootPath+'/UserCtrl?method=vcode)');
+			$('.phoKey').css('background', 'url('+rootPath+'/user/vcode.action)');
 			// 刷新验证码
 			$('.refresh').on('click', function(){
-				$('.phoKey').css('background', 'url('+rootPath+'/UserCtrl?method=vcode&_dc='+new Date().getTime()+')');
+				$('.phoKey').css('background', 'url('+rootPath+'/user/vcode.action?_dc='+new Date().getTime()+')');
 			});
 			
 			var empty = {username:'请输入您的手机号',password:'请输入密码',vcode:'请输入收到的验证码'};
